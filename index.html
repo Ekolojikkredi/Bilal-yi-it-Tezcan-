@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekolojik Kredi Sistemi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="recycling_logo.png" alt="Ekolojik Kredi Logo">
+            <h1>Ekolojik Kredi Sistemi</h1>
+        </div>
+    </header>
+    
+    <div class="main-container">
+        <div class="sidebar">
+            <h2>Menü</h2>
+            <ul>
+                <li><a href="#" onclick="showPage('kayit-form')">Kayıt Ol</a></li>
+                <li><a href="#" onclick="showPage('veri-girisi-form')">Veri Girişi</a></li>
+                <li><a href="#" onclick="showPage('veri-goruntule')">Veri Görüntüle</a></li>
+                <li><a href="#" onclick="showPage('toplam-atik')">Toplam Atık</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <section id="kayit-form">
+                <h2>Öğrenci Kayıt Formu</h2>
+                <form id="ogrenciKayitForm" onsubmit="kayitOl(event)">
+                    <label for="ogrenci-adi">Adı:</label>
+                    <input type="text" id="ogrenci-adi" required>
+
+                    <label for="ogrenci-soyadi">Soyadı:</label>
+                    <input type="text" id="ogrenci-soyadi" required>
+
+                    <label for="ogrenci-numara">Öğrenci Numarası:</label>
+                    <input type="text" id="ogrenci-numara" required>
+
+                    <label for="ogrenci-okul">Okul Adı:</label>
+                    <input type="text" id="ogrenci-okul" required>
+
+                    <label for="ogrenci-email">E-mail:</label>
+                    <input type="email" id="ogrenci-email" required>
+
+                    <label for="ogrenci-telefon">Telefon:</label>
+                    <input type="text" id="ogrenci-telefon" required>
+
+                    <button type="submit">Kaydet</button>
+                </form>
+            </section>
+
+            <section id="veri-girisi-form">
+                <h2>Atık Girişi</h2>
+                <form id="atikGirisForm" onsubmit="veriGirisi(event)">
+                    <label for="atik-turu">Atık Türü:</label>
+                    <select id="atik-turu" required>
+                        <option value="yag">Yağ</option>
+                        <option value="tekstil">Tekstil</option>
+                        <option value="pil">Pil</option>
+                        <option value="elektronik">Elektronik</option>
+                        <option value="kagit">Kağıt</option>
+                        <option value="cam">Cam</option>
+                        <option value="metal">Metal</option>
+                        <option value="plastik">Plastik</option>
+                    </select>
+
+                    <label for="miktar">Miktar (kg):</label>
+                    <input type="number" id="miktar" step="0.01" required>
+
+                    <label for="kayit-yapan">Veri Giren Kişi:</label>
+                    <input type="text" id="kayit-yapan" required>
+
+                    <button type="submit">Veri Gir</button>
+                </form>
+            </section>
+
+            <section id="veri-goruntule">
+                <h2>Öğrenci Atıkları</h2>
+                <p>Okul numaranızı girerek atıklarınızı görüntüleyebilirsiniz:</p>
+                <input type="text" id="okul-no" placeholder="Okul Numarası" required>
+                <button onclick="veriGoruntule()">Görüntüle</button>
+                <table id="atikkayitlari">
+                    <thead>
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Atık Türü</th>
+                            <th>Miktar (kg)</th>
+                            <th>Puan</th>
+                            <th>Veri Giren</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section id="toplam-atik">
+                <h2>Toplam Atık Puanı</h2>
+                <p>Toplam atık puanınızı görmek için okul numaranızı girin:</p>
+                <input type="text" id="okul-no-toplam" placeholder="Okul Numarası" required>
+                <button onclick="toplamAtik()">Görüntüle</button>
+                <p id="toplam-atik-puan"></p>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <p>Torbalı Anadolu Lisesi Coğrafya Proje Ödevi Ekolojik Kredi Örnek Sitesidir</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
